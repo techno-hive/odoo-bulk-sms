@@ -16,7 +16,7 @@ class TechnoHiveSendSMS(models.Model):
     def btn_sendsms(self):
         # print(self)
         self.sendsms("+254713727937","Hey nigga")
-        val=self.env['technohive.config'].search(limit=1,[])
+        val=self.env['technohive.config'].search([])
         apikey=val.api_key
         partnerID=val.partner_id
         shortcode=val.sender_id
@@ -33,7 +33,7 @@ class TechnoHiveSendSMS(models.Model):
             print(self.text_message)
 
     def sendsms(self,phone, message):
-        val = self.env['technohive.config'].search(limit=1,[])
+        val = self.env['technohive.config'].search([])
 
 
         apikey = val.api_key
