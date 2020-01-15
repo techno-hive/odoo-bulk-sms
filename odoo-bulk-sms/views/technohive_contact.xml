@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="search_technohive_contact" model="ir.ui.view">
+            <field name="name">Contact Search View</field>
+            <field name="model">technohive.contact</field>
+            <field name="arch" type="xml">
+                <search string="Search Contact">
+                    <field name="name" />
+                    <field name="phone_number" />
+                    <field name="description" />
+                    <filter name="Kenyan"  domain="[('phone_number','=','+254739827657')]" />
+                    <filter name="Not Kenyan"  domain="[('phone_number','!=','+254739827657')]" />
+                    <group expand="1" string="Group By">
+                        <filter name="name" context="{'group_by':'name'}" string="Nationality" />
+                    </group>
+
+                </search>
+
+            </field>
+
+
+        </record>
+        <record id="technohive_contact_tree" model="ir.ui.view">
+            <field name="name">Contact tree</field>
+            <field name="model">technohive.contact</field>
+            <field name="arch" type="xml">
+                <tree string="Student Tree">
+                    <field name="name"/>
+                    <field name="phone_number"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

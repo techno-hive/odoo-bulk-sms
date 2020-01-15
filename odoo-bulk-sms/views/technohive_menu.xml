@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="tecnohive_contact_action" model="ir.actions.act_window">
+        <field name="name">Contacts</field>
+        <field name="res_model">technohive.contact</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Create New contact</p>
+        </field>
+
+    </record>
+
+
+
+       <record id="tecnohive_config_action" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">technohive.config</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Enter Your configuration</p>
+
+        </field>
+
+    </record>
+     <menuitem id="techohive_sms" name="TechnoHive SMS" />
+
+
+    <menuitem id="techohive_contact" name="Contacts" parent="techohive_sms" action="tecnohive_contact_action" />
+    <menuitem id="technohive_config" name="Configuration" parent="techohive_sms"  action="tecnohive_config_action" />
+
+
+
+
+</odoo>

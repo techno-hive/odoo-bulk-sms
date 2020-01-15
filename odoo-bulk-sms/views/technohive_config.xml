@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="technohive_config_search" model="ir.ui.view">
+            <field name="name">TechnoHive Config Search View</field>
+            <field name="model">technohive.config</field>
+            <field name="arch" type="xml">
+                <search string="Technohive search">
+                    <field name="api_key"/>
+                    <field name="partner_id"/>
+                    <field name="sender_id"/>
+                    <filter name="technohive" domain="[('sender_id','=','technohive')]" string="TechnoHive"/>
+
+                    <group expand="1" string="Group By">
+                        <filter name="apikey" context="{'group_by':'sender_id'}" string="Sender Ids" />
+
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="technohive_config_tree" model="ir.ui.view">
+            <field name="name">TechnoHive Config</field>
+            <field name="model">technohive.config</field>
+            <field name="arch" type="xml">
+                <tree string="TechnoHive Config">
+                    <field name="api_key"/>
+                    <field name="partner_id"/>
+                    <field name="sender_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="technohive_contact_form" model="ir.ui.view">
+            <field name="name">Technohive Contact Form</field>
+            <field name="model">technohive.config</field>
+            <field name="arch" type="xml">
+                <form string="Technohive form">
+                    <header>
+                        <button name="button_send" string="Send" class="oe_highlight" type="object" />
+                        <field name="state" widget="statusbar" status_visible="draft,sent,cancel" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="api_key" />
+                            </group>
+
+                            <group>
+                               <field name="partner_id" />
+                               <field name="sender_id" />
+                            </group>
+
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"  widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread" />
+                    </div>
+                </form>
+            </field>
+        </record>
+    </data>
+
+
+
+</odoo>
