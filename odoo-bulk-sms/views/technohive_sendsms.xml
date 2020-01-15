@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="technohive_send_sms_tree" model="ir.ui.view">
+            <field name="name">Send SMS Tree view</field>
+            <field name="model">technohive.sendsms</field>
+            <field name="arch" type="xml">
+                <tree string="TechnoHive Send SMS">
+                    <field name="phone_number" />
+                    <field name="text_message" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="technohive_send_sms_form">
+            <field name="name">Tecnohive Send SMS Form</field>
+            <field name="model">technohive.sendsms</field>
+            <field name="arch" type="xml">
+                <form string="TechnoHive Send sms">
+                    <header>
+                        <button type="object" string="Send SMS" class="oe_highlight" name="btn_sendsms" />
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="phone_number" />
+                            <field name="text_message" />
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

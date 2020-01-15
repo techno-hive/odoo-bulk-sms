@@ -35,7 +35,7 @@
             <field name="arch" type="xml">
                 <form string="Technohive form">
                     <header>
-                        <button name="button_send" string="Send" class="oe_highlight" type="object" />
+                        <button name="button_approve" string="Approve" class="oe_highlight" type="object" />
                         <field name="state" widget="statusbar" status_visible="draft,sent,cancel" />
                     </header>
                     <sheet>

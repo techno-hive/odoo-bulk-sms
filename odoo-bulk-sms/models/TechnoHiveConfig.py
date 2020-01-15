@@ -15,17 +15,18 @@ class TechnoHiveConfig(models.Model):
         ('cancel','Cancelled'),
     ],required=True, default='draft')
 
-    def button_send(self):
+    def button_approve(self):
+        print("work in progress")
         
-        http = urllib3.PoolManager()
-        URL = 'https://mysms.celcomafrica.com/api/services/sendsms/?apikey=" . urlencode($apikey) . "&partnerID=" . urlencode($partnerID) . "&message=" . urlencode($message) . "&shortcode=$shortcode&mobile=$mobile"'
-        root = '/notes/note'  # the path where the request handler is located
-        datas = http.request('GET', URL)
-        datas = json.loads(datas.data.decode('utf-8'))  # parses the response to  a compatible form
-        print(datas)
-        # for data in datas:
-        #     self.env['notes.note'].create({
-        #         'partner_id': self.env['res.partner.search'].search([('notes_user_id', '=', data['user_id'])]).id,
-        #         'note': data['note'],
-        #         'time_date': data['time']
-        #     })
+        # http = urllib3.PoolManager()
+        # URL = 'https://mysms.celcomafrica.com/api/services/sendsms/?apikey=" . urlencode($apikey) . "&partnerID=" . urlencode($partnerID) . "&message=" . urlencode($message) . "&shortcode=$shortcode&mobile=$mobile"'
+        # root = '/notes/note'  # the path where the request handler is located
+        # datas = http.request('GET', URL)
+        # datas = json.loads(datas.data.decode('utf-8'))  # parses the response to  a compatible form
+        # print(datas)
+        # # for data in datas:
+        # #     self.env['notes.note'].create({
+        # #         'partner_id': self.env['res.partner.search'].search([('notes_user_id', '=', data['user_id'])]).id,
+        # #         'note': data['note'],
+        # #         'time_date': data['time']
+        # #     })
