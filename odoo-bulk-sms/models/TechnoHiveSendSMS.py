@@ -15,7 +15,7 @@ class TechnoHiveSendSMS(models.Model):
 
     def btn_sendsms(self):
         # print(self)
-        self.sendsms("+254713727937","Hey nigga")
+        # self.sendsms("+254713727937","Hey nigga")
         val=self.env['technohive.config'].search([])
         apikey=val.api_key
         partnerID=val.partner_id
@@ -23,7 +23,7 @@ class TechnoHiveSendSMS(models.Model):
         message=self.text_message
         for f in self.phone_number:
             http = urllib3.PoolManager()
-            URL = "https://mysms.celcomafrica.com/api/services/sendsms/?apikey=w" + apikey + "&partnerID=" + partnerID \
+            URL = "https://mysms.celcomafrica.com/api/services/sendsms/?apikey=" + apikey + "&partnerID=" + partnerID \
                   + "&message=" + message + "&shortcode="+ shortcode + "&mobile="+f.phone_number
             root = '/notes/note'  # the path where the request handler is located
             datas = http.request('GET', URL)
@@ -48,9 +48,13 @@ class TechnoHiveSendSMS(models.Model):
             else:
 
                 # Access data SMS was sent
+                print("message was sent")
                 for x in decoded['responses']:
                     print (x['respose-code'])
-                    self.env['technohive_sentsms'].create({'message':'hey'})
+                    self.env['technohive_sentsms'].create({'message': self.text_message,'response_code':x['respose-code'],
+                                                           'response_description':x['response-description'],
+                                                           'mobile':self.phone_number.phone_number,'message_id':x['messageid'],
+                                                          'network_id': x['networkid']})
 
             # datas = json.loads(datas.data.decode('utf-8'))  # parses the response to  a compatible form
             # print(datas['responses'])
