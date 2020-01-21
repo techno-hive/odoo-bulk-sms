@@ -28,13 +28,26 @@
 
     </record>
     <record id="technohive_send_sms_action" model="ir.actions.act_window">
-        <field name="name">TechnoHive SendSMS</field>
+        <field name="name">Send SMS</field>
         <field name="res_model">technohive.sendsms</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="help" type="xml">
-            <p class="ae_view_nocontent_create">Send SMS</p>
+            <p class="ae_view_nocontent_create">Create a list to send sms</p>
+        </field>
+    </record>
+    <record id="technohive_sent_sms_action" model="ir.actions.act_window">
+        <field name="name">Sent SMS </field>
+        <field name="res_model">technohive_sentsms</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="help" type="xml">
+            <p class="ae_view_nocontent_create">
+                No SMS sent yet
+            </p>
+
         </field>
     </record>
      <menuitem id="techohive_sms" name="TechnoHive SMS" />
@@ -43,6 +56,7 @@
     <menuitem id="techohive_contact" name="Contacts" parent="techohive_sms" action="tecnohive_contact_action" />
     <menuitem id="technohive_config" name="Configuration" parent="techohive_sms"  action="tecnohive_config_action" />
     <menuitem id="techno_hive_sendsms_menu" name="Send SMS" parent="techohive_sms" action="technohive_send_sms_action" />
+    <menuitem id="techno_hive_sentsms_menu" name="Sent SMS" parent="techohive_sms" action="technohive_sent_sms_action" />
 
 
 
