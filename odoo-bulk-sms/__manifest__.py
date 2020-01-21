@@ -11,7 +11,8 @@
         'views/technohive_config.xml',
         'views/technohive_contact.xml',
         'views/technohive_menu.xml',
-        'views/technohive_sendsms.xml'
+        'views/technohive_sendsms.xml',
+        'views/technohive_sentsms.xml',
     ],
     'depends':['base','mail'],
     'license':'AGPL-3',

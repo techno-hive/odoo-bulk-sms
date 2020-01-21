@@ -29,6 +29,8 @@
                     <field name="name"/>
                     <field name="phone_number"/>
                     <field name="description"/>
+                    <field name="create_uid" />
+                    <field name="create_date" />
                 </tree>
             </field>
         </record>
