@@ -14,8 +14,9 @@ class TechnoHiveSendSMS(models.Model):
     ],required="True", default='draft')
 
     def btn_sendsms(self):
-        # print(self)
-        # self.sendsms("+254713727937","Hey nigga")
+        # when calling from another model, just call sendsms methods with arguments
+        # e.g
+        # self.sendsms("+254722549778","Hey TechnoHive Solutions. This module is wonderful")
         val=self.env['technohive.config'].search([])
         apikey=val.api_key
         partnerID=val.partner_id
@@ -27,20 +28,20 @@ class TechnoHiveSendSMS(models.Model):
                   + "&message=" + message + "&shortcode="+ shortcode + "&mobile="+f.phone_number
             root = '/notes/note'  # the path where the request handler is located
             datas = http.request('GET', URL)
-            # print(datas.data)
+
             decoded = json.loads(datas.data)
-            print("TechnoHive Solution")
+
             print(decoded)
             # print(decoded['respose-code'])
             if 'respose-code' in decoded:
-                print("hey nigga")
+
             # if decoded['respose-code']:
-                print('incorrect spelling')
+
                 self.env['technohive_sentsms'].create({'message': self.text_message,'response_code':decoded['respose-code'],
                                                        'response_description':decoded['response-description'],
                                                        'mobile':self.phone_number.phone_number})
             elif 'response-code' in decoded:
-                print('correct spelling')
+
                 self.env['technohive_sentsms'].create({'message': self.text_message,'response_code':decoded['response-code'],
                                                        'response_description':decoded['response-description'],
                                                        'mobile':self.phone_number.phone_number})
@@ -48,7 +49,7 @@ class TechnoHiveSendSMS(models.Model):
             else:
 
                 # Access data SMS was sent
-                print("message was sent")
+
                 for x in decoded['responses']:
                     print (x['respose-code'])
                     self.env['technohive_sentsms'].create({'message': self.text_message,'response_code':x['respose-code'],
@@ -72,4 +73,34 @@ class TechnoHiveSendSMS(models.Model):
               + "&message=" + message + "&shortcode=" + shortcode + "&mobile=" + phone
         root = '/notes/note'  # the path where the request handler is located
         datas = http.request('GET', URL)
-        datas = json
+        # print(datas.data)
+        decoded = json.loads(datas.data)
+        print("TechnoHive Solution")
+        print(decoded)
+        # print(decoded['respose-code'])
+        if 'respose-code' in decoded:
+
+            # if decoded['respose-code']:
+
+            self.env['technohive_sentsms'].create(
+                {'message': message, 'response_code': decoded['respose-code'],
+                 'response_description': decoded['response-description'],
+                 'mobile': phone})
+        elif 'response-code' in decoded:
+
+            self.env['technohive_sentsms'].create(
+                {'message': message, 'response_code': decoded['response-code'],
+                 'response_description': decoded['response-description'],
+                 'mobile': phone})
+
+        else:
+
+            # Access data SMS was sent
+
+            for x in decoded['responses']:
+                print(x['respose-code'])
+                self.env['technohive_sentsms'].create({'message': message, 'response_code': x['respose-code'],
+                                                       'response_description': x['response-description'],
+                                                       'mobile': phone,
+                                                       'message_id': x['messageid'],
+                                                       'network_id': x['networkid']})
