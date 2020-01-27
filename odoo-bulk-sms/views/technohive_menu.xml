@@ -53,10 +53,10 @@
      <menuitem id="techohive_sms" name="TechnoHive SMS" />
 
 
+    <menuitem id="techno_hive_sendsms_menu" name="Send SMS" parent="techohive_sms" action="technohive_send_sms_action" />
+    <menuitem id="techno_hive_sentsms_menu" name="Outbox" parent="techohive_sms" action="technohive_sent_sms_action" />
     <menuitem id="techohive_contact" name="Contacts" parent="techohive_sms" action="tecnohive_contact_action" />
     <menuitem id="technohive_config" name="Configuration" parent="techohive_sms"  action="tecnohive_config_action" />
-    <menuitem id="techno_hive_sendsms_menu" name="Send SMS" parent="techohive_sms" action="technohive_send_sms_action" />
-    <menuitem id="techno_hive_sentsms_menu" name="Sent SMS" parent="techohive_sms" action="technohive_sent_sms_action" />
 
 
 

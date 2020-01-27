@@ -3,4 +3,4 @@ access_technohive_config,access.technohive.config,model_technohive_config,base.g
 access_technohive_contact,access.technohive.contact,model_technohive_contact,base.group_user,1,1,1,0
 access_technohive_sms,access.technohive.sms,model_technohive_sms,base.group_user,1,1,1,0
 access_technohive_sendsms,acess.technohive.sendsms,model_technohive_sendsms,base.group_user,1,1,1,0
-access_technohive_sentsms,access.technohive.sentsms,model_technohive_sentsms,base.group_user,1,0,0,0
+access_technohive_sentsms,access.technohive.sentsms,model_technohive_sentsms,base.group_user,1,1,1,0

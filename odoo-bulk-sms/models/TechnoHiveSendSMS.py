@@ -22,7 +22,12 @@ class TechnoHiveSendSMS(models.Model):
         partnerID=val.partner_id
         shortcode=val.sender_id
         message=self.text_message
+
+
+
         for f in self.phone_number:
+            print(f)
+            print("Hello world")
             http = urllib3.PoolManager()
             URL = "https://mysms.celcomafrica.com/api/services/sendsms/?apikey=" + apikey + "&partnerID=" + partnerID \
                   + "&message=" + message + "&shortcode="+ shortcode + "&mobile="+f.phone_number
@@ -32,19 +37,21 @@ class TechnoHiveSendSMS(models.Model):
             decoded = json.loads(datas.data)
 
             print(decoded)
-            # print(decoded['respose-code'])
+
             if 'respose-code' in decoded:
 
             # if decoded['respose-code']:
+                
 
                 self.env['technohive_sentsms'].create({'message': self.text_message,'response_code':decoded['respose-code'],
                                                        'response_description':decoded['response-description'],
-                                                       'mobile':self.phone_number.phone_number})
+                                                       'mobile':f.phone_number})
             elif 'response-code' in decoded:
+                print("Here")
 
                 self.env['technohive_sentsms'].create({'message': self.text_message,'response_code':decoded['response-code'],
                                                        'response_description':decoded['response-description'],
-                                                       'mobile':self.phone_number.phone_number})
+                                                       'mobile':f.phone_number})
 
             else:
 
@@ -54,11 +61,14 @@ class TechnoHiveSendSMS(models.Model):
                     print (x['respose-code'])
                     self.env['technohive_sentsms'].create({'message': self.text_message,'response_code':x['respose-code'],
                                                            'response_description':x['response-description'],
-                                                           'mobile':self.phone_number.phone_number,'message_id':x['messageid'],
+                                                           'mobile':f.phone_number,'message_id':x['messageid'],
                                                           'network_id': x['networkid']})
 
             # datas = json.loads(datas.data.decode('utf-8'))  # parses the response to  a compatible form
             # print(datas['responses'])
+
+        self.write({'state': 'sent'})
+
 
 
     def sendsms(self,phone, message):
