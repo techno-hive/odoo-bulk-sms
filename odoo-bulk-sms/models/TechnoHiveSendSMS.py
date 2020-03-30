@@ -29,7 +29,7 @@ class TechnoHiveSendSMS(models.Model):
             print(f)
             print("Hello world")
             http = urllib3.PoolManager()
-            URL = "https://mysms.celcomafrica.com/api/services/sendsms/?apikey=" + apikey + "&partnerID=" + partnerID \
+            URL = "https://bulksms.technohive.co.ke/api/services/sendsms/?apikey=" + apikey + "&partnerID=" + partnerID \
                   + "&message=" + message + "&shortcode="+ shortcode + "&mobile="+f.phone_number
             root = '/notes/note'  # the path where the request handler is located
             datas = http.request('GET', URL)
